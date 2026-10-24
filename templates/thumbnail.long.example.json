@@ -1,0 +1,17 @@
+{
+  "background": "thumb_base.jpg",
+  "avatar": "channel_avatar.jpg",
+  "output": "thumbnail.jpg",
+  "label": "СУДОВЕ ЗАСІДАННЯ",
+  "title_lines": [
+    "ПІДРОБЛЕНИЙ",
+    "ОБВИНУВАЛЬНИЙ",
+    "АКТ?"
+  ],
+  "accent_index": 2,
+  "subtitle": "Запоріжжя • Шевченківський райсуд",
+  "subline": "Повне судове засідання • 14 хв",
+  "channel": "Свободные Люди Запорожья",
+  "title_size": 50,
+  "label_size": 34
+}

@@ -1,0 +1,16 @@
+{
+  "background": "thumb_base.png",
+  "output": "thumbnail.jpg",
+  "label": "КСУ • 29.09.2026",
+  "title_lines": [
+    "УРЯД НЕ МОЖЕ",
+    "САМ ОБМЕЖУВАТИ",
+    "ПРАВА"
+  ],
+  "subline": "Рішення № 4-р/2026",
+  "pill_text": "ЩО ЦЕ ЗМІНЮЄ?",
+  "author_name": "Сергій Величко",
+  "handle": "@humanrightszp",
+  "zoom": 1.25,
+  "focus_y": 0.47
+}

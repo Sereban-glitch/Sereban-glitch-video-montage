@@ -1,0 +1,36 @@
+{
+  "channel_id": "UC1KtjDqNXlN6qqXVUh0Y5Mw",
+  "channel_title": "Свободные Люди Запорожья",
+  "channel_handle": "@humanrightszp",
+  "telegram_url": "https://t.me/svobodnye_ludi_zp",
+  "default_privacy": "private",
+  "category_id": "25",
+  "default_language": "uk",
+  "default_audio_language": "uk",
+  "login_hint": "daers024@gmail.com",
+  "short_defaults": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "subtitle_font": "DejaVu Sans",
+    "subtitle_size": 50,
+    "subtitle_max_width": 960,
+    "margin_v": 250,
+    "loudnorm_i": -14,
+    "loudnorm_tp": -1.5,
+    "loudnorm_lra": 11
+  },
+  "long_defaults": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "subtitle_font": "DejaVu Sans",
+    "subtitle_size": 34,
+    "margin_v": 36,
+    "margin_l": 60,
+    "margin_r": 60,
+    "loudnorm_i": -14,
+    "loudnorm_tp": -1.5,
+    "loudnorm_lra": 11
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "source": "source/input.mp4",
+  "audio": "source/audio16k.wav",
+  "transcript": "transcript.json",
+  "clean_transcript": "transcript_clean.json",
+  "language": "uk",
+  "whisper_model": "large-v3-turbo",
+  "whisper_compute": "int8",
+  "cpu_threads": 4,
+  "beam_size": 5,
+  "audit_min_gap": 5.0,
+  "audit_model": "small",
+  "artifact_markers": [
+    "Дякую за перегляд"
+  ],
+  "text_fixes": {},
+  "max_gap": 3.0,
+  "pad": 0.6,
+  "subtitle": {
+    "font": "DejaVu Sans",
+    "size": 34,
+    "margin_l": 60,
+    "margin_r": 60,
+    "margin_v": 36,
+    "outline": 2.2,
+    "shadow": 0.8,
+    "max_chars": 84,
+    "max_line_chars": 44
+  },
+  "render": {
+    "threads": 2,
+    "filter_threads": 1,
+    "preset": "veryfast",
+    "crf": 21,
+    "audio_bitrate": "160k",
+    "audio_rate": 48000,
+    "audio_channels": 2
+  },
+  "gemini": {
+    "url": "http://127.0.0.1:18080/v1/messages",
+    "model": "gemini-2.5-flash",
+    "key_file": "~/.config/antigravity-proxy/api-key",
+    "batch_size": 15,
+    "max_tokens": 4096
+  },
+  "youtube": {
+    "expected_channel_id": "UC1KtjDqNXlN6qqXVUh0Y5Mw",
+    "client_secret": "~/.config/youtube/client_secret.json",
+    "token": "token.json",
+    "login_hint": "daers024@gmail.com",
+    "notify_subscribers": false,
+    "video": "final.mp4",
+    "thumbnail": "thumbnail.jpg"
+  }
+}

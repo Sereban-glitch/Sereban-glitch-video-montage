@@ -1,0 +1,41 @@
+# Secrets and Credentials (NEVER COMMIT)
+token*.json
+client_secret*.json
+*.env*
+*.key
+*.pem
+*.p12
+
+# Media & Render Artifacts (Keep repository lightweight)
+*.mp4
+*.m4a
+*.wav
+*.mp3
+*.mkv
+*.avi
+*.mov
+*.flv
+source/
+segs/
+seg_ass/
+final_frames/
+preview_frames/
+thumb_base*.png
+thumb_base*.jpg
+*.ts
+*.ass
+*.srt
+
+# Python & Environment
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
