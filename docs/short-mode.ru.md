@@ -13,6 +13,7 @@
   - `Title`: белый текст 58px в 2 строки на полупрозрачной подложке, маргин 125px (например, `УРЯД НЕ МОЖЕ\nСАМ ОБМЕЖУВАТИ ПРАВА`).
   - `Sub`: субтитры 50px, полупрозрачный фон, маргин снизу 250px (чтобы не перекрываться элементами интерфейса Shorts).
 - **Звук:** нормализация EBU R128 (`loudnorm=I=-14:TP=-1.5:LRA=11`).
+- **Синтез речи (TTS Smart):** двуязычный движок (`uk`, `ru`, `mixed`), разделение `subtitle_text` (чистый текст на экране) и `phonetic_text` (фонетика и ударения для диктора), словарь `custom_pronunciation.json`, 3 движка (`edge_smart`, `silero`, `clone_cloud`).
 
 ---
 
@@ -22,15 +23,21 @@
 PROJECT=~/projects/my-short
 SKILL=~/.config/opencode/skills/video-montage
 
-# 1. Рендер видео
+# 1. (Опционально) Генерация закадровой озвучки
+"$PROJECT/.venv/bin/python" "$SKILL/scripts/short/tts_smart.py" \
+  --text "Текст фразы" \
+  --output "$PROJECT/source/voiceover.mp3" \
+  --engine edge_smart
+
+# 2. Рендер видео (с субтитрами и/или авто-озвучкой)
 "$PROJECT/.venv/bin/python" "$SKILL/scripts/short/render_short.py" --project "$PROJECT" --config short.json
 
-# 2. Генерация вертикальной обложки
+# 3. Генерация вертикальной обложки
 "$PROJECT/.venv/bin/python" "$SKILL/scripts/short/thumb_short.py" --project "$PROJECT" --config thumbnail.json
 
-# 3. Загрузка в private
+# 4. Загрузка в private
 "$PROJECT/.venv/bin/python" "$SKILL/scripts/publish/upload_youtube.py" --project "$PROJECT"
 
-# 4. Проверка статуса
+# 5. Проверка статуса
 "$PROJECT/.venv/bin/python" "$SKILL/scripts/publish/verify_upload.py" --project "$PROJECT"
 ```

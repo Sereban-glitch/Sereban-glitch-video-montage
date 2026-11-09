@@ -32,13 +32,35 @@ cp "$SKILL/templates/short.config.example.json" short.json
 cp "$SKILL/templates/thumbnail.short.example.json" thumbnail.json
 ```
 
-### 2. Рендер видео и обложки
+### 2. Озвучка и аудио-пайплайн (Шаг 3: TTSSmart)
+Если ролик требует синтеза речи (или закадрового голоса вместо/вместе с живым звуком), используется двуязычный генератор `tts_smart.py`:
+```bash
+python3 "$SKILL/scripts/short/tts_smart.py" \
+  --text "Текст для озвучки" \
+  --output "source/voiceover.mp3" \
+  --engine edge_smart \
+  --lang auto
+```
+**Ключевые возможности:**
+- **Двуязычный роутер**: автоматически определяет язык (`uk`, `ru`, `mixed` / суржик) по буквам-маркерам (`і, ї, є, ґ` vs `ы, э, ъ, ё`).
+- **Разделение потоков**: `subtitle_text` (чистая орфография для `.ass` субтитров) и `phonetic_text` (адаптированный текст с ударениями для синтезатора).
+- **Словарь произношения**: `custom_pronunciation.json` фиксирует правильное чтение аббревиатур (`ТЦК`, `ВЛК`, `ЄСІТС`, `102`, `220V`) и ударения в сложных словах и фамилиях.
+- **3 движка синтеза (`--engine`)**:
+  * `edge_smart` (по умолчанию, 0% CPU): нейросетевые голоса `uk-UA-OstapNeural` / `ru-RU-DmitryNeural` с автоматическим сохранением мужского тембра через локальный Silero при сбоях серверов Microsoft.
+  * `silero` (локальный CPU с контролем ударений `+`): модели `v4_ua` (`mykyta`) и `v4_ru` (`aidar`).
+  * `clone_cloud` (клон голоса): обращение к HuggingFace Space с референсом `assets/my_voice_ref.wav` и мягким откатом на `edge_smart`.
+- **Студийный мастеринг FFmpeg**: `highpass=f=80,acompressor,loudnorm=I=-14:TP=-1.5:LRA=11` под стандарты YouTube Shorts.
+
+### 3. Рендер видео и обложки
 ```bash
 python3 "$SKILL/scripts/short/render_short.py" --project . --config short.json
+# Или с автоматической озвучкой по субтитрам:
+python3 "$SKILL/scripts/short/render_short.py" --project . --config short.json --tts --tts-engine edge_smart
+
 python3 "$SKILL/scripts/short/thumb_short.py" --project . --config thumbnail.json
 ```
 
-### 3. Загрузка в private
+### 4. Загрузка в private
 ```bash
 .venv/bin/python "$SKILL/scripts/publish/upload_youtube.py" --project .
 .venv/bin/python "$SKILL/scripts/publish/verify_upload.py" --project .

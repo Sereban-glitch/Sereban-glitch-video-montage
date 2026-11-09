@@ -28,7 +28,8 @@ def main() -> None:
     args = ap.parse_args()
 
     project = Path(args.project).resolve()
-    cfg_path = Path(args.config).expanduser() if args.config else project / "config.json"
+    cfg_file = Path(args.config) if args.config else Path("config.json")
+    cfg_path = cfg_file if cfg_file.is_absolute() else project / cfg_file
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
     yt = cfg.get("youtube", {})
     meta = json.loads((project / "metadata.json").read_text(encoding="utf-8"))
